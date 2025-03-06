@@ -8,16 +8,12 @@
 
 
     <!-- Custom HTML head -->
-    
-    <meta name="description" content="*
-Notes Collection
-Plz cite this if you find it useful.
+    <!-- Put your customized HTML <head> meta here. -->
+    <meta name="description" content="*Notes CollectionPlz cite this if you find it useful.
 Author 小猫.
-*
-Misc
-Browse with chromium with best experience. If you find any inconvenience please consult me via E-mail.
+*MiscBrowse with chromium with best experience. If you find any inconvenience please consult me via E-mail.
 The site is built with Shiroa, many thanks to that. Further, I write articles and notes with Emacs, which I thought you must have a try!
-The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
+The site is built on Thu, 06 Mar 2025, at 19:11:52 CST, with typst 0.13.0.
 ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff" />
@@ -188,7 +184,7 @@ The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <!-- Put your customized page header here. -->                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
@@ -207,6 +203,11 @@ The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
+                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
+                            aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
 
                     <h1 class="menu-title">小猫笔记</h1>
@@ -216,6 +217,17 @@ The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
                     </div>
                 </div>
 
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
+                            aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
@@ -249,6 +261,9 @@ The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
 
         </div>
 
+        <script src="/internal/elasticlunr.min.js"></script>
+        <script src="/internal/mark.min.js"></script>
+        <script src="/internal/searcher.js"></script>
 
         <script src="/internal/svg_utils.js"></script>
         <script src="/theme/index.js"></script>

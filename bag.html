@@ -8,27 +8,20 @@
 
 
     <!-- Custom HTML head -->
-    
+    <!-- Put your customized HTML <head> meta here. -->
     <meta name="description" content="Notes on Basic Algebraic Geometry 1
 小猫
 Institute of Nekoist, 猫娘研究所
 meow@neko.ist
-*
-1.Chapter 1: Plane Algebraic Curves
-This chapter mainly focused on plane algebraic curves. As far as I thought, it’s not so general.
-*
-1.1.Section 1: Basic Notion
-1.
-Note that for plane algebraic curves, two intersects at finite points, or one is subset of the other.
+*1.Chapter 1: Plane Algebraic CurvesThis chapter mainly focused on plane algebraic curves. As far as I thought, it’s not so general.
+*1.1.Section 1: Basic Notion1.Note that for plane algebraic curves, two intersects at finite points, or one is subset of the other.
 
 
-2.
-Lüroth theorem: every field extension 𝐹𝐾 is a simple extension if 𝐾⊂𝐹⊂𝐾(𝑋). smallest field?
+2.Lüroth theorem: every field extension 𝐹𝐾 is a simple extension if 𝐾⊂𝐹⊂𝐾(𝑋). smallest field?
 𝐹 isomorphic to 𝐾(𝑋)? If [𝐾(𝑋):𝐾]&#x3D;1 and 𝐹≇𝐾.
 
 
-3.
-The question ">
+3.The question arose o">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff" />
 
@@ -198,7 +191,7 @@ The question ">
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <!-- Put your customized page header here. -->                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
@@ -217,6 +210,11 @@ The question ">
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
+                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
+                            aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
 
                     <h1 class="menu-title">小猫笔记</h1>
@@ -226,6 +224,17 @@ The question ">
                     </div>
                 </div>
 
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
+                            aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
@@ -259,6 +268,9 @@ The question ">
 
         </div>
 
+        <script src="/internal/elasticlunr.min.js"></script>
+        <script src="/internal/mark.min.js"></script>
+        <script src="/internal/searcher.js"></script>
 
         <script src="/internal/svg_utils.js"></script>
         <script src="/theme/index.js"></script>

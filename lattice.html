@@ -9,12 +9,40 @@
 
     <!-- Custom HTML head -->
     <!-- Put your customized HTML <head> meta here. -->
-    <meta name="description" content="*Notes CollectionPlz cite this if you find it useful.
-Author 小猫.
-*MiscBrowse with chromium with best experience. If you find any inconvenience please consult me via E-mail.
-The site is built with Shiroa, many thanks to that. Further, I write articles and notes with Emacs, which I thought you must have a try!
-The site is built on Thu, 06 Mar 2025, at 19:11:52 CST, with typst 0.13.0.
-">
+    <meta name="description" content="*1.格密码基础•Definition 1.1  设 𝑏1,𝑏2,…,𝑏𝑛是 ℝ𝑚空间中的 𝑛 个线性无关向量, 由这些向量生成的格记为
+ℒ(𝑏1,…,𝑏𝑛)&#x3D;{∑𝑥𝑖𝑏𝑖|𝑥𝑖∈ℤ}.
+
+𝑛是格的秩, 𝑚是格的维数. 若 𝑚&#x3D;𝑛, 称格为满秩的.
+‣ℒ(1,𝜋) 不是格(Thue 定理).
+
+
+•格基的矩阵表示: 可把 𝑏1,…,𝑏𝑛记成矩阵形式:
+𝐵&#x3D;(𝑏1,…,𝑏𝑛),
+
+则可记成
+ℒ(𝐵)&#x3D;ℒ(𝑏1,…,𝑏𝑛)&#x3D;{𝐵𝑥|𝑥∈ℤ𝑛}.
+
+
+
+•格生成空间定义为
+span(ℒ)&#x3D;{∑𝑥𝑖𝑏𝑖|𝑥𝑖∈ℝ}.
+
+格的基本多边形定义为
+𝒫(ℒ)&#x3D;{∑𝑥𝑖𝑏𝑖|𝑥𝑖∈[0,1)}.
+
+
+
+•如何判断一组向量是格基?
+Lemma 1.2  设 Λ是一个格, 𝑏1,…,𝑏𝑛是 Λ中一组线性无关向量. 则 𝑏1,…𝑏𝑛形成一组 Λ 的格基当且仅当
+𝒫(𝑏1,…,𝑏𝑛)∩Λ&#x3D;{0}.
+
+Proof   
+1.(⟹)
+
+𝒫(𝑏1,…,𝑏𝑛)∩Λ&#x3D;{𝐵𝑥|𝑥∈[0,1)𝑛}∩{𝐵𝑥|𝑥∈ℤ𝑛}
+&#x3D;{0}.
+
+2.(⟸) 由格的封闭性: 注意! 格的维数应当为 𝑛, 否则该引理可能得到奇怪结果, 如 𝒫(1)∩ℤ2&#x3D;{0}, ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff" />
 
@@ -154,7 +182,7 @@ The site is built on Thu, 06 Mar 2025, at 19:11:52 CST, with typst 0.13.0.
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="/intro.html" class="active">Intro</a></li><li class="chapter-item expanded affix "><li class="part-title">Notes</li><li class="chapter-item expanded "><a href="/elliptic_curves.html"><strong aria-hidden="true">1.</strong> AEC Notes</a></li><li class="chapter-item expanded "><a href="/bag.html"><strong aria-hidden="true">2.</strong> Shafarevich BAG1 Notes</a></li><li class="chapter-item expanded "><a href="/lattice.html"><strong aria-hidden="true">3.</strong> Lattice</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="/intro.html">Intro</a></li><li class="chapter-item expanded affix "><li class="part-title">Notes</li><li class="chapter-item expanded "><a href="/elliptic_curves.html"><strong aria-hidden="true">1.</strong> AEC Notes</a></li><li class="chapter-item expanded "><a href="/bag.html"><strong aria-hidden="true">2.</strong> Shafarevich BAG1 Notes</a></li><li class="chapter-item expanded "><a href="/lattice.html" class="active"><strong aria-hidden="true">3.</strong> Lattice</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -243,7 +271,7 @@ The site is built on Thu, 06 Mar 2025, at 19:11:52 CST, with typst 0.13.0.
                         <script>
     let appContainer = document.currentScript && document.currentScript.parentElement;
     window.typstRenderModuleReady.then((plugin) => {
-        window.typstBookRenderPage(plugin, "/intro", appContainer);
+        window.typstBookRenderPage(plugin, "/lattice", appContainer);
     });
 </script>
                     </main>

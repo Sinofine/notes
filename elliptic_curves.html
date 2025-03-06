@@ -8,27 +8,14 @@
 
 
     <!-- Custom HTML head -->
-    
+    <!-- Put your customized HTML <head> meta here. -->
     <meta name="description" content="Notes on the Arithmetic of Elliptic Curves
 小猫
 Institute of Nekoist, 猫娘研究所
 meow@neko.ist
-*
-1.Algebraic Varieties
-*
-1.1.Some Algebraic Stuff
-Consider the algebraic closure of 𝔽𝑝𝑘, there’s a proposition.
-Proposition 1.1: ̄𝔽𝑝𝑘&#x3D;⋃𝑖≥1𝔽𝑝𝑖.
-*
-1.2.Affine Varieties
-*
-1.2.1.Reducible &amp;amp; Irreducible Algebraic Sets.
-Some examples.
-Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.
-Example 1.2: 𝑌2−𝑋𝑌−𝑋2𝑌+𝑌3&#x3D; 0 is not irreducible.
-*
-1.2.2.Smoothness &amp;amp; Tangent Space
-Definition 1.1: Let 𝑉 be a variety and𝑃∈𝑉 a point. The tangent space 𝑇 ">
+*1.Algebraic Varieties*1.1.Some Algebraic StuffConsider the algebraic closure of 𝔽𝑝𝑘, there’s a proposition.
+Proposition 1.1: ̄𝔽𝑝𝑘&#x3D;⋃𝑖≥1𝔽𝑝𝑖.*1.2.Affine Varieties*1.2.1.Reducible &amp;amp; Irreducible Algebraic Sets.Some examples.
+Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋𝑌−𝑋2𝑌+𝑌3&#x3D;0 is not irreducible.*1.2.2.Smoothness &amp;amp; Tangent SpaceDefinition 1.1: Let 𝑉 be a variety and 𝑃∈𝑉 a point. The tangent space𝑇 of 𝑉 at 𝑃 is d">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff" />
 
@@ -198,7 +185,7 @@ Definition 1.1: Let 𝑉 be a variety and𝑃∈𝑉 a point. The tangent space 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <!-- Put your customized page header here. -->                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
@@ -217,6 +204,11 @@ Definition 1.1: Let 𝑉 be a variety and𝑃∈𝑉 a point. The tangent space 
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
+                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
+                            aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
 
                     <h1 class="menu-title">小猫笔记</h1>
@@ -226,6 +218,17 @@ Definition 1.1: Let 𝑉 be a variety and𝑃∈𝑉 a point. The tangent space 
                     </div>
                 </div>
 
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
+                            aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
@@ -259,6 +262,9 @@ Definition 1.1: Let 𝑉 be a variety and𝑃∈𝑉 a point. The tangent space 
 
         </div>
 
+        <script src="/internal/elasticlunr.min.js"></script>
+        <script src="/internal/mark.min.js"></script>
+        <script src="/internal/searcher.js"></script>
 
         <script src="/internal/svg_utils.js"></script>
         <script src="/theme/index.js"></script>

@@ -4,8 +4,7 @@
 
 html {
   scrollbar-color: var(--scrollbar) var(--bg);
-    scrollbar-width: 25px;
-    font-family: "CMU Concrete", serif;
+  scrollbar-width: 25px;
 }
 #searchresults a,
 .content a:link,
@@ -103,8 +102,8 @@ a > .hljs {
 
 .menu-title {
   display: inline-block;
+  font-weight: 200;
   font-size: 2.4rem;
-    font-weight: normal;
   line-height: var(--menu-bar-height);
   text-align: center;
   margin: 0;

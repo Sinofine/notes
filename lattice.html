@@ -101,6 +101,7 @@ Proof
         });
 
         var rendererWasmModule = fetch('/internal/typst_ts_renderer_bg.wasm');
+        window.typstBookJsLoaded = typstBookJsLoaded;
         window.typstRenderModuleReady = typstBookJsLoaded.then(() => {
             var typstRenderModule = window.typstRenderModule =
                 window.TypstRenderModule.createTypstRenderer();

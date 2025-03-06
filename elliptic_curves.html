@@ -9,16 +9,26 @@
 
     <!-- Custom HTML head -->
     
-    <meta name="description" content="*
-Notes Collection
-Plz cite this if you find it useful.
-Author 小猫.
+    <meta name="description" content="Notes on the Arithmetic of Elliptic Curves
+小猫
+Institute of Nekoist, 猫娘研究所
+meow@neko.ist
 *
-Misc
-Browse with chromium with best experience. If you find any inconvenience please consult me via E-mail.
-The site is built with Shiroa, many thanks to that. Further, I write articles and notes with Emacs, which I thought you must have a try!
-The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
-">
+1.Algebraic Varieties
+*
+1.1.Some Algebraic Stuff
+Consider the algebraic closure of 𝔽𝑝𝑘, there’s a proposition.
+Proposition 1.1: ̄𝔽𝑝𝑘&#x3D;⋃𝑖≥1𝔽𝑝𝑖.
+*
+1.2.Affine Varieties
+*
+1.2.1.Reducible &amp;amp; Irreducible Algebraic Sets.
+Some examples.
+Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.
+Example 1.2: 𝑌2−𝑋𝑌−𝑋2𝑌+𝑌3&#x3D; 0 is not irreducible.
+*
+1.2.2.Smoothness &amp;amp; Tangent Space
+Definition 1.1: Let 𝑉 be a variety and𝑃∈𝑉 a point. The tangent space 𝑇 ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff" />
 
@@ -158,7 +168,7 @@ The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="/intro.html" class="active">Intro</a></li><li class="chapter-item expanded affix "><li class="part-title">Notes</li><li class="chapter-item expanded "><a href="/elliptic_curves.html"><strong aria-hidden="true">1.</strong> AEC Notes</a></li><li class="chapter-item expanded "><a href="/bag.html"><strong aria-hidden="true">2.</strong> Shafarevich BAG1 Notes</a></li><li class="chapter-item expanded "><a href="/lattice.html"><strong aria-hidden="true">3.</strong> Lattice</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="/intro.html">Intro</a></li><li class="chapter-item expanded affix "><li class="part-title">Notes</li><li class="chapter-item expanded "><a href="/elliptic_curves.html" class="active"><strong aria-hidden="true">1.</strong> AEC Notes</a></li><li class="chapter-item expanded "><a href="/bag.html"><strong aria-hidden="true">2.</strong> Shafarevich BAG1 Notes</a></li><li class="chapter-item expanded "><a href="/lattice.html"><strong aria-hidden="true">3.</strong> Lattice</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -231,7 +241,7 @@ The site is built on Thu, 06 Mar 2025, at 18:59:39 CST, with typst 0.12.0.
                         <script>
     let appContainer = document.currentScript && document.currentScript.parentElement;
     window.typstRenderModuleReady.then((plugin) => {
-        window.typstBookRenderPage(plugin, "/intro", appContainer);
+        window.typstBookRenderPage(plugin, "/elliptic_curves", appContainer);
     });
 </script>
                     </main>

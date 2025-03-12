@@ -1,32 +1,48 @@
 <!DOCTYPE HTML>
-<html lang="" class="sidebar-visible no-js light">
+<html lang="{{ language }}" class="sidebar-visible no-js {{ default_theme }}">
 
 <head>
     <!-- Book generated using mdBook -->
     <meta charset="UTF-8">
-    <title>小猫笔记</title>
+    <title>{{ title }}</title>
+    {{#if is_print }}
+    <meta name="robots" content="noindex" />
+    {{/if}}
+    {{#if base_url}}
+    <base href="{{ base_url }}">
+    {{/if}}
 
 
     <!-- Custom HTML head -->
-    <!-- Put your customized HTML <head> meta here. -->
-    <meta name="description" content="Notes on the Arithmetic of Elliptic Curves
-小猫
-Institute of Nekoist, 猫娘研究所
-meow@neko.ist
-*1.Algebraic Varieties*1.1.Some Algebraic StuffConsider the algebraic closure of 𝔽𝑝𝑘, there’s a proposition.
-Proposition 1.1: ̄𝔽𝑝𝑘&#x3D;⋃𝑖≥1𝔽𝑝𝑖.*1.2.Affine Varieties*1.2.1.Reducible &amp;amp; Irreducible Algebraic Sets.Some examples.
-Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋𝑌−𝑋2𝑌+𝑌3&#x3D;0 is not irreducible.*1.2.2.Smoothness &amp;amp; Tangent SpaceDefinition 1.1: Let 𝑉 be a variety and 𝑃∈𝑉 a point. The tangent space𝑇 of 𝑉 at 𝑃 is d">
+    {{> head}}
+
+    <meta name="description" content="{{ description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff" />
 
-    <link rel="stylesheet" href="/theme/css/variables.css">
-    <link rel="stylesheet" href="/theme/css/general.css">
-    <link rel="stylesheet" href="/theme/css/chrome.css">
+    {{#if favicon_svg}}
+    <link rel="icon" href="{{ path_to_root }}favicon.svg">
+    {{/if}}
+    {{#if favicon_png}}
+    <link rel="shortcut icon" href="{{ path_to_root }}favicon.png">
+    {{/if}}
+    <link rel="stylesheet" href="{{ path_to_root }}theme/css/variables.css">
+    <link rel="stylesheet" href="{{ path_to_root }}theme/css/general.css">
+    <link rel="stylesheet" href="{{ path_to_root }}theme/css/chrome.css">
+    {{#if print_enable}}
+    <link rel="stylesheet" href="{{ path_to_root }}theme/css/print.css" media="print">
+    {{/if}}
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="/theme/FontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ path_to_root }}theme/FontAwesome/css/font-awesome.css">
+    {{#if copy_fonts}}
+    <link rel="stylesheet" href="{{ path_to_root }}theme/fonts/fonts.css">
+    {{/if}}
 
     <!-- Custom theme stylesheets -->
+    {{#each additional_css}}
+    <link rel="stylesheet" href="{{ ../path_to_root }}{{ this }}">
+    {{/each}}
 
     <style>
         .typst-app { position: relative; }
@@ -61,9 +77,11 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
         })();
 
         window.captureStack = function() { }
+        {{!-- window.captureStack = function() { return new Error(); } --}}
     </script>
 
-    <script id="shiroa-js" type="module" src="/internal/shiroa.js"></script>
+    <script id="shiroa-js" type="module" src="{{ path_to_root }}internal/shiroa.js"></script>
+    {{!-- <script id="shiroa-js" type="module" src="/dev/frontend/dist/book.mjs"></script> --}}
     <script>
         window.typstRerender = () => { };
         window.typstChangeTheme = () => { };
@@ -73,7 +91,8 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
             document.getElementById('shiroa-js').addEventListener('error', reject);
         });
 
-        var rendererWasmModule = fetch('/internal/typst_ts_renderer_bg.wasm');
+        var rendererWasmModule = fetch('{{ renderer_module }}');
+        {{!-- var rendererWasmModule = fetch('/dev/frontend/node_modules/@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm'); --}}
         window.typstRenderModuleReady = typstBookJsLoaded.then(() => {
             var typstRenderModule = window.typstRenderModule =
                 window.TypstRenderModule.createTypstRenderer();
@@ -92,9 +111,9 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "/";
+            var path_to_root = "{{ path_to_root }}";
             window.typstPathToRoot = path_to_root;
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "{{ preferred_dark_theme }}" : "{{ default_theme }}";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -134,7 +153,7 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
             // todo: consistent theme between html and typst
             var html = document.querySelector('html');
             html.classList.remove('no-js')
-            html.classList.remove('light')
+            html.classList.remove('{{ default_theme }}')
             html.classList.add(theme);
             html.classList.add('js');
         </script>
@@ -155,7 +174,7 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="/intro.html">Intro</a></li><li class="chapter-item expanded affix "><li class="part-title">Notes</li><li class="chapter-item expanded "><a href="/elliptic_curves.html" class="active"><strong aria-hidden="true">1.</strong> AEC Notes</a></li><li class="chapter-item expanded "><a href="/bag.html"><strong aria-hidden="true">2.</strong> Shafarevich BAG1 Notes</a></li><li class="chapter-item expanded "><a href="/lattice.html"><strong aria-hidden="true">3.</strong> Lattice</a></li></ol>
+                {{#toc}}{{/toc}}
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -185,7 +204,8 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <!-- Put your customized page header here. -->                <div id="menu-bar-hover-placeholder"></div>
+                {{> header}}
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
@@ -204,20 +224,38 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
+                        {{#if search_enabled}}
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
                             aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
                             aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
+                        {{/if}}
                     </div>
 
-                    <h1 class="menu-title">小猫笔记</h1>
+                    <h1 class="menu-title">{{ book_title }}</h1>
 
                     <div class="right-buttons">
+                        {{#if print_enable}}
+                        <a href="{{ path_to_root }}theme/print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        {{/if}}
+                        {{#if git_repository_url}}
+                        <a href="{{git_repository_url}}" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa {{git_repository_icon}}"></i>
+                        </a>
+                        {{/if}}
+                        {{#if git_repository_edit_url}}
+                        <a href="{{git_repository_edit_url}}" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        {{/if}}
 
                     </div>
                 </div>
 
+                {{#if search_enabled}}
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
@@ -229,6 +267,7 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
                         </ul>
                     </div>
                 </div>
+                {{/if}}
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
@@ -241,16 +280,24 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
 
                 <div id="content" class="content">
                     <main>
-                        <script>
-    let appContainer = document.currentScript && document.currentScript.parentElement;
-    window.typstRenderModuleReady.then((plugin) => {
-        window.typstBookRenderPage(plugin, "/elliptic_curves", appContainer);
-    });
-</script>
+                        {{{ content }}}
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                        {{!-- {{#previous}}
+                        <a rel="prev" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters previous"
+                            title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        {{/previous}}
+
+                        {{#next}}
+                        <a rel="next" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters next"
+                            title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                        {{/next}} --}}
 
                         <div style="clear: both"></div>
                     </nav>
@@ -258,16 +305,32 @@ Example 1.1: 𝑌2−𝑋3−1&#x3D;0 is irreducible.Example 1.2: 𝑌2−𝑋�
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                {{!-- {{#previous}}
+                <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter"
+                    aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                {{/previous}}
+
+                {{#next}}
+                <a rel="next" href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter"
+                    aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                {{/next}} --}}
             </nav>
 
         </div>
 
-        <script src="/internal/elasticlunr.min.js"></script>
-        <script src="/internal/mark.min.js"></script>
-        <script src="/internal/searcher.js"></script>
+        {{#if search_js}}
+        <script src="{{ path_to_root }}internal/elasticlunr.min.js"></script>
+        <script src="{{ path_to_root }}internal/mark.min.js"></script>
+        <script src="{{ path_to_root }}internal/searcher.js"></script>
+        {{/if}}
 
-        <script src="/internal/svg_utils.js"></script>
-        <script src="/theme/index.js"></script>
+        <script src="{{ path_to_root }}internal/svg_utils.js"></script>
+        {{!-- <script src="/dev/frontend/src/svg_utils.cjs"></script> --}}
+        <script src="{{ path_to_root }}theme/index.js"></script>
 
     </div>
 </body>
